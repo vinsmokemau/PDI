@@ -1,4 +1,4 @@
-"""Robert's Filter."""
+"""Roberts' Filter."""
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -13,11 +13,6 @@ gray = rgb2gray(color)
 
 y = gray.shape[0]
 x = gray.shape[1]
-
-roberts_mask = np.array([[1, 0],
-                         [0, -1]])
-
-print(roberts_mask[0, 0])
 
 roberts_image = np.zeros(gray.shape)
 roberts_image_x = np.zeros(gray.shape)
