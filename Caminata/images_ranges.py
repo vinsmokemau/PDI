@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
@@ -25,19 +24,21 @@ green_spot_max = 178.43
 red_spot_max = 181.65
 
 red_images = []
+blue_frame_id = 0
 
 for gray_frame in frames:
-    red_image = np.zeros(gray_frame.shape)
+    blue_image = np.zeros(gray_frame.shape)
     y = gray_frame.shape[0]
     x = gray_frame.shape[1]
     for j in range(1, y - 1):
         for i in range(1, x - 1):
-            if red_spot_min < gray_frame[j, i] < red_spot_max:
-                red_image[j, i] = 255
-    if len(str(frame_id)) > 1:
-        cv2.imwrite('redframe' + str(i) + '.jpg', red_image)
+            if blue_spot_min < gray_frame[j, i] < blue_spot_max:
+                blue_image[j, i] = 255
+    if len(str(blue_frame_id)) > 1:
+        cv2.imwrite('blueframe' + str(blue_frame_id) + '.jpg', blue_image)
     else:
-        cv2.imwrite('redframe0' + str(i) + '.jpg', red_image)
+        cv2.imwrite('blueframe0' + str(blue_frame_id) + '.jpg', blue_image)
+    blue_frame_id += 1
 
 """
 fig = plt.gcf()
